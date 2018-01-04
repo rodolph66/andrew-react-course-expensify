@@ -4,6 +4,9 @@
   "private": true,
   "description": "Andrew Mead course 2017",
   "main": "index.js",
+  "engines": {
+    "node": "9.3.0"
+  },
   "scripts": {
     "server": "live-server public",
     "build:dev": "webpack",
