@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid/v1'
+//import uuid from 'uuid/v1'
 import { connect } from 'react-redux'
 import { DateRangePicker } from 'react-dates'
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters'
@@ -54,8 +54,8 @@ export class ExpenseListFilters extends React.Component{
           showClearDates={true}
           numberOfMonths={1}
           isOutsideRange={() => false}
-          startDateId={uuid()}
-          endDateId={uuid()}
+          startDateId={'01-rgs-date-range-2018-01-05'}
+          endDateId={'02-rgs-date-range-2018-01-05'}
         />
       </div>
     )
