@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Andrew Mead course 2017",
-  "main": "index.js",
+  "main": "index.html",
   "engines": {
     "node": "8.9.1"
   },
