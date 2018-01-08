@@ -1,5 +1,4 @@
 import * as firebase from 'firebase'
-import { setTimeout } from 'timers';
 
 const  config = {
   apiKey: process.env.FIREBASE_API_KEY,

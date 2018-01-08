@@ -34,6 +34,31 @@ export const editExpense = (id , updates) => ({
   updates
 })
 
+// ********************************************************
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+})
+
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    // the "return" is optional, here added to be used in the test files
+    return database.ref('expenses').once('value').then((snapshot) => {
+      const expenses = []
+      snapshot.forEach(element => {
+        expenses.push({
+          id: element.key,
+          ...element.val()
+        })
+      });
+      dispatch(setExpenses(expenses))
+    })
+  }
+}
+
+// ********************************************************
 
 /**
  * activities to update the store involves:
