@@ -6,8 +6,10 @@ import {
   addExpense, 
   editExpense, 
   removeExpense,
+  startRemoveExpense,
   setExpenses, 
-  startSetExpenses } from '../../actions/expenses'
+  startSetExpenses, 
+  startEditExpense} from '../../actions/expenses'
 import expenses from '../fixtures/expenses'
 import database from '../../firebase/firebase'
 
@@ -132,6 +134,37 @@ test('should fetch the expenses from firebase', (done) => {
   })
 })
 
+
+test('should remove expense from expenses firebase databse', (done) => {
+  const store = createMockStore({})
+  const expense = expenses[0]
+  store.dispatch(startRemoveExpense({id: expense.id})).then(() => {
+    const actions = store.getActions()
+    expect(actions[0]).toEqual({
+      type: 'REMOVE_EXPENSE',
+      id: expense.id
+    })
+    done()
+  })
+})
+
+test('should edit expenses from firebase', (done) => {
+  const store = createMockStore({})
+  const id = expenses[1].id
+  const updates = {amount: 500.00, note: 'modefied'}
+  store.dispatch(startEditExpense(id, updates)).then(() => {
+    const actions = store.getActions()
+    expect(actions[0]).toEqual({
+      type: 'EDIT_EXPENSE',
+      id,
+      updates
+    })
+    return database.ref(`expenses/${id}`).once('value')
+  }).then(snapshot => {
+    expect(snapshot.val().amount).toBe(updates.amount)
+    done()
+  })
+})
 
 // // TEST addExpense()  - No params
 // test('should setup add expense action object with default values', () => {
