@@ -7,6 +7,7 @@ import configureStore from './store/consfigureStore'
 import { startSetExpenses } from './actions/expenses'
 import { login, logout } from './actions/auth'
 import getVisibleExpenses from './selectors/expenses'
+import LoadingPage from './components/LoadingPage'
 import 'normalize.css/normalize.css'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
@@ -35,7 +36,7 @@ const renderApp = () => {
   }
 }
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 // *****************************
 

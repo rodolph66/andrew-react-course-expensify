@@ -16,7 +16,7 @@ module.exports = (env) => {
   //console.log('env:', env)
 
   return {
-    entry: './src/app.js',
+    entry: ['babel-polyfill', './src/app.js'],
     //entry: './playground/redux-expensify.js',
     //entry: './playground/hoc.js',
   
